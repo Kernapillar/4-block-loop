@@ -32,42 +32,53 @@ import * as Tone from 'tone'
 
 document.addEventListener("DOMContentLoaded", () => {
 
-    document.getElementById('test-button')?.addEventListener('click', async()=> {
-    await Tone.start()
-    console.log('audio is ready')
+document.getElementById('test-button')?.addEventListener('click', async()=> {
+await Tone.start()
+console.log('audio is ready')
 })
 
-    const synths = [
-        new Tone.Synth(),
-        new Tone.Synth(), 
-        new Tone.Synth()
-    ];
-    synths[0].oscillator.type = 'triangle';
-    synths[1].oscillator.type = 'sine';
-    synths[2].oscillator.type = 'sawtooth';
-    
-    synths.forEach(synth => synth.toDestination());
-    
-    const rows = document.body.querySelectorAll('div > div'), 
-    notes = ["G5", "E4", "C3"];
-    
-    Tone.Transport.scheduleRepeat(repeat, '8n')
-    Tone.Transport.start();
-    
-    let index = 0
-    function repeat(time) {
-        let step = index % 8
-        for (let i = 0; i < rows.length; i++) {
-            let synth = synths[i],
-            note = notes[i],
-            row = rows[i],
-            input = row.querySelector(`input:nth-child(${step + 1})`);
-            if (input.checked) synth.triggerAttackRelease(note, '8n', time);
-            console.log("made it here")
-        }
-        index++
-    }
+const synths = [
+    new Tone.Synth(),
+    new Tone.Synth(), 
+    new Tone.Synth()
+];
+synths[0].oscillator.type = 'triangle';
+synths[1].oscillator.type = 'sine';
+synths[2].oscillator.type = 'sawtooth';
 
-    addEventListener
+synths.forEach(synth => synth.toDestination());
+
+const rows = document.body.querySelectorAll('div > div'), 
+notes = ["G5", "E4", "C3"];
+
+Tone.Transport.scheduleRepeat(repeat, '8n')
+let playing = false;
+
+let index = 0
+function repeat(time) {
+    let step = index % 8
+    for (let i = 0; i < rows.length; i++) {
+        let synth = synths[i],
+        note = notes[i],
+        row = rows[i],
+        input = row.querySelector(`input:nth-child(${step + 1})`);
+        if (input.checked) synth.triggerAttackRelease(note, '8n', time);
+        
+    }
+    index++
+}
+const playPause = document.getElementById("play-pause");
+playPause.addEventListener("click", (e) => {
+    if (playing) {
+        e.target.innerText = "Play"
+        Tone.Transport.stop();
+        playing = false;
+        index = 0
+    } else {
+        e.target.innerText = "Pause"
+        Tone.Transport.start();
+        playing = true;
+    }
+})
     
 })
