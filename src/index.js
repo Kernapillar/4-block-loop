@@ -1,84 +1,62 @@
 // entry file for JS
 import * as Seq from './scripts/anotherJSfile'
+import { Sequencer } from './scripts/parentSequencer'
 import * as Tone from 'tone'
-
-// //create a synth and connect it to the main output (your speakers)
-// const synth = new Tone.Synth().toDestination();
-
-// // const sampler = new Tone.Sampler({
-// //     urls: {
-// //         kick: '/drum_samples/kick.mp3',
-// //         snare: '/drum_samples/snare.mp3',
-
-// //     }
-// // }).toDestination();
-
-// //play a middle 'C' for the duration of an 8th note
-
-// document.getElementById('test-button')?.addEventListener('click', async()=> {
-//     await Tone.start()
-//     console.log('audio is ready')
-// })
-
-// // document.addEventListener('click', () => {
-// //     synth.triggerAttackRelease("C4", "8n");
-// //     console.log("pressed the button")
-// // })
-
-
-// document.getElementById('kick').addEventListener('click', () => {
-    
-// })
 
 document.addEventListener("DOMContentLoaded", () => {
 
-document.getElementById('test-button')?.addEventListener('click', async()=> {
-await Tone.start()
-console.log('audio is ready')
-})
+    const seqTest = new Sequencer(4, 8);
+    seqTest.testfunc()
+    seqTest.renderSequencer('test-grid');
 
-const synths = [
-    new Tone.Synth(),
-    new Tone.Synth(), 
-    new Tone.Synth()
-];
-synths[0].oscillator.type = 'triangle';
-synths[1].oscillator.type = 'sine';
-synths[2].oscillator.type = 'sawtooth';
+// document.getElementById('test-button')?.addEventListener('click', async()=> {
+// await Tone.start()
+// console.log('audio is ready')
+// })
 
-synths.forEach(synth => synth.toDestination());
+// const synths = [
+//     new Tone.Synth(),
+//     new Tone.Synth(), 
+//     new Tone.Synth()
+// ];
+// synths[0].oscillator.type = 'square8';
+// synths[1].oscillator.type = 'square8';
+// synths[2].oscillator.type = 'square8';
 
-const rows = document.body.querySelectorAll('div > div'), 
-notes = ["G5", "E4", "C3"];
+// synths.forEach(synth => synth.toDestination());
 
-Tone.Transport.scheduleRepeat(repeat, '8n')
-let playing = false;
+// const rows = document.body.querySelectorAll('div > div'), 
+// notes = ["G5", "E4", "C3"];
 
-let index = 0
-function repeat(time) {
-    let step = index % 8
-    for (let i = 0; i < rows.length; i++) {
-        let synth = synths[i],
-        note = notes[i],
-        row = rows[i],
-        input = row.querySelector(`input:nth-child(${step + 1})`);
-        if (input.checked) synth.triggerAttackRelease(note, '8n', time);
+// Tone.Transport.scheduleRepeat(repeat, '8n')
+// let playing = false;
+
+// let index = 0
+// function repeat(time) {
+//     let step = index % 8
+//     for (let i = 0; i < rows.length; i++) {
+//         let synth = synths[i],
+//         note = notes[i],
+//         row = rows[i],
+//         input = row.querySelector(`input:nth-child(${step + 1})`);
+//         if (input.checked) synth.triggerAttackRelease(note, '8n', time);
         
-    }
-    index++
-}
-const playPause = document.getElementById("play-pause");
-playPause.addEventListener("click", (e) => {
-    if (playing) {
-        e.target.innerText = "Play"
-        Tone.Transport.stop();
-        playing = false;
-        index = 0
-    } else {
-        e.target.innerText = "Pause"
-        Tone.Transport.start();
-        playing = true;
-    }
-})
+//     }
+//     index++
+// }
+// const playPause = document.getElementById("play-pause");
+// playPause.addEventListener("click", (e) => {
+//     if (playing) {
+//         e.target.innerText = "Play"
+//         Tone.Transport.stop();
+//         playing = false;
+//         index = 0
+//     } else {
+//         Tone.start();
+//         e.target.innerText = "Pause"
+//         Tone.Transport.start();
+//         playing = true;
+//     }
+// })
     
 })

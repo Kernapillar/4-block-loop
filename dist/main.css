@@ -12,13 +12,13 @@ h1 {
   color: blue;
 }
 
-#basicSequencer {
+#test-grid {
   display: flexbox;
   margin: 1rem;
   text-align: center;
   align-self: center;
   background-color: rgb(102, 210, 244);
 }
-#basicSequencer div {
+#test-grid div {
   margin-top: 1rem;
 }
