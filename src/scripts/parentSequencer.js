@@ -33,7 +33,8 @@ class Sequencer {
             seqContainer.appendChild(lane);
 
         })
-
+        console.log('end of render')
+        console.log(seqContainer)
         
     }
     

@@ -8,6 +8,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const seqTest = new Sequencer(4, 8);
     seqTest.testfunc()
     seqTest.renderSequencer('test-grid');
+     
+    const seqTest2 = new Sequencer(3, 2);
+    seqTest2.renderSequencer('test-2')
 
 // document.getElementById('test-button')?.addEventListener('click', async()=> {
 // await Tone.start()

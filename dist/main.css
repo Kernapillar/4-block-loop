@@ -12,8 +12,12 @@ h1 {
   color: blue;
 }
 
+button {
+  cursor: pointer;
+}
+
 #test-grid {
-  display: flexbox;
+  display: grid;
   margin: 1rem;
   text-align: center;
   align-self: center;
@@ -21,4 +25,15 @@ h1 {
 }
 #test-grid div {
   margin-top: 1rem;
+}
+
+.node {
+  display: inline-flex;
+  border-radius: 10px;
+  margin: 5px;
+  height: 50px;
+  width: 50px;
+  border: 1px solid black;
+  background-color: lightslategray;
+  cursor: pointer;
 }
