@@ -5,7 +5,7 @@ import * as Tone from 'tone'
 document.addEventListener("DOMContentLoaded", () => {
  
     // initialize sequencers here 
-    const seqTest = new Sequencer(4, 16);
+    const seqTest = new Sequencer(8, 16);
 
     // must pass in the html container element when calling render
     seqTest.renderSequencer('test-grid');
@@ -34,11 +34,8 @@ document.addEventListener("DOMContentLoaded", () => {
             })
         }
         Tone.Transport.bpm.value = 120;
-        Tone.Transport.scheduleRepeat(repeat, '8n')
-    
+        Tone.Transport.scheduleRepeat(repeat, '8n')    
     }
-
-
 
 
     // setup play and pause controls
@@ -53,6 +50,8 @@ document.addEventListener("DOMContentLoaded", () => {
         if (playing) {
             e.target.innerText = "Play"
             Tone.Transport.stop();
+            beat = 0;
+            everyOther = false;
             playing = false;
         } else {
             e.target.innerText = "Pause"

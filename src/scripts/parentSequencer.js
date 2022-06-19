@@ -9,7 +9,8 @@ class Sequencer {
         this.soundsource = soundsource;
         this.time = time;
         this.synths = this.createSynths(rows);
-        this.notes = ["F4", "Eb4", "C4", "Ab3"]
+        // hardcoded F major 
+        this.notes = ["F4", "E4","D4", "C4", "Bb3", "A3", "G3", "F3"]
         console.log(this.synths)
     }
 
