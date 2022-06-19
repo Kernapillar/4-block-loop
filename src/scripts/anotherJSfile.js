@@ -1,7 +1,3 @@
-export const func = () => {
-    console.log("from another file!");
-}
-
 
 
 // original tutorial code 
