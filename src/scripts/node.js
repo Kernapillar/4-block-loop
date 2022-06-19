@@ -1,6 +1,5 @@
 class Node {
     constructor (state) {
-        // this.sound = sound;
         this.state = state;
     }
 

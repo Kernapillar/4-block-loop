@@ -1,11 +1,37 @@
 // entry file for JS
 import { Sequencer } from './scripts/parentSequencer'
+import { synthSequencer } from './scripts/synthSequencer'
 import * as Tone from 'tone'
 
+// to do: 
+    // set up sequencer full clear 
+    // add sequencer scan indicator 
+    // add global volume control 
+    // add drums sequencer
+        // define Playnotes for the drumsequencer!!!
+        //  
+    // add chords Sequencer
+    
+    // research synth sounds to use
+    // CSS style! 
+
+    // if there is time: 
+        // allow chainable patterns to add variety to the loops
+        // color coded canvas visualizer?
+
 document.addEventListener("DOMContentLoaded", () => {
+    
+    // setup time and looping 
+    let beat = 0;
+    let steps = 16;
+    let everyOther = false
+    let playing = false;
+    let started = false;
+    Tone.Transport.bpm.value = 120;
  
     // initialize sequencers here 
-    const seqTest = new Sequencer(8, 16);
+    const notes = ["C4", "D4", "E4", "F4", "G4", "A4", "B4", "C5"]
+    const seqTest = new synthSequencer(8, steps, notes);
 
     // must pass in the html container element when calling render
     seqTest.renderSequencer('test-grid');
@@ -13,18 +39,12 @@ document.addEventListener("DOMContentLoaded", () => {
     // add sequencer to the sequencer array:
     const sequencerArr = [seqTest];
 
-    // setup time and looping 
-    let beat = 0;
-    let everyOther = false
-    let playing = false;
-    let started = false;
 
     const playLoop = () => {
         const repeat = (time) => {
             sequencerArr.forEach(seq => {
-                console.log(sequencerArr)
                 seq.playNotes(everyOther, beat, time)
-                beat = (beat + 1) % 16
+                beat = (beat + 1) % steps
                 if (beat === 0) {
                     if (everyOther) {
                         everyOther = false  
@@ -33,7 +53,6 @@ document.addEventListener("DOMContentLoaded", () => {
                     }} 
             })
         }
-        Tone.Transport.bpm.value = 120;
         Tone.Transport.scheduleRepeat(repeat, '8n')    
     }
 

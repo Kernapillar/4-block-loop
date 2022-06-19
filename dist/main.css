@@ -46,3 +46,8 @@ button {
   border: 1px solid black;
   background-color: red;
 }
+
+.node.current-beat {
+  transition: border 0.2s ease-out;
+  border: 1px solid white;
+}

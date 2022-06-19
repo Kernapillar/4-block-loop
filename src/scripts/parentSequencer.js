@@ -1,29 +1,12 @@
 import { Node } from './node' 
 import * as Tone from 'tone'
 
-// hardcoded notes, create synths should be in a child class?
-
 class Sequencer {
-    constructor (rows, numSteps, soundsource, time) {
+    constructor (rows, numSteps) {
         this.grid = this.createGrid(rows, numSteps);
-        this.soundsource = soundsource;
-        this.time = time;
-        this.synths = this.createSynths(rows);
-        // hardcoded F major 
-        this.notes = ["F4", "E4","D4", "C4", "Bb3", "A3", "G3", "F3"]
-        console.log(this.synths)
     }
 
-    // creates a basic synth object for each row of the sequencer
-    createSynths (count) {
-        const synths = [];
-        for (let i = 0; i < count; i++) {
-            let synth = new Tone.Synth({ oscillator: { type: "square8" } }).toDestination();
-            synths.push(synth);
-        }
-        console.log(synths)
-        return synths;
-    }
+    
 
     // creates the grid and initiates node objects in each row for each step
     createGrid (numRows, numSteps) {
@@ -47,6 +30,7 @@ class Sequencer {
             row.forEach((unusedVar, nIdx) => {
                 const seqNode = document.createElement('buton');
                 seqNode.className = 'node'
+                seqNode.classList.add(`col-${nIdx}`)
                 seqNode.addEventListener('click', (e) => {
                     this.clickToggle(rIdx, nIdx, e);
                 })
@@ -82,20 +66,41 @@ class Sequencer {
         }
         
     }
+    clearAll() {
+        this.grid.flat.forEach(node => node.stateToggle(true))
+        const nodes = document.getElementsByClassName('node');
+        nodes.forEach(node => {
+            this.removeNodeClasses(node);
+        })
+    }
     
-    // plays active notes on the current beat
-    playNotes(everyOther, curBeat, time) {
-        for (let i = 0; i < this.grid.length; i++) {
-            const row = this.grid[i];
-            let synth = this.synths[i]
-            let note = this.notes[i]
-            if (this.grid[i][curBeat].state === 1) {
-                synth.triggerAttackRelease(note, '8n', this.time)
-            }
-            if (everyOther && this.grid[i][curBeat].state === 2) {
-                synth.triggerAttackRelease(note, '8n', this.time)
-            }
+    // adds and removes current-beat class to visually indicate current beat
+    seqScanToggle(curBeat) {
+        const nodeColumn = document.getElementsByClassName(`col-${curBeat}`)
+        for (let i = 0; i < nodeColumn.length; i++) {
+            const curNode = nodeColumn[i];
+            curNode.classList.add('current-beat')
+            setTimeout(() => {
+                curNode.classList.remove('current-beat')
+            }, 200)  
         }
+
+    // why doesnt this work? 
+    // seqScanToggle(curBeat) {
+    //     const nodeColumn = document.getElementsByClassName(`col-${curBeat}`)
+    //     for (let i = 0; i < nodeColumn.length; i++) {
+    //         let j = i - 1
+    //         if (j === -1) j = 15
+    //         const curNode = nodeColumn[i];
+    //         const prevNode = nodeColumn[j];
+    //         curNode.classList.add('current-beat')
+    //         if (prevNode.classList.contains('current-beat')) {
+    //             prevNode.classList.remove('current-beat')
+    //         }
+        
+    //     }
+    // }
+
     }
 
 
