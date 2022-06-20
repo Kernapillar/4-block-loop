@@ -23,8 +23,6 @@ import { DrumSequencer } from './scripts/drumSequencer';
 
 document.addEventListener("DOMContentLoaded", () => {
 
-    console.log(Tone.ToneAudioBuffer.supportsType("/scripts/drum_samples/hihat.mp3"))
-
 
     // setup time and looping 
     let beat = 0;

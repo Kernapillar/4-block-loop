@@ -1,5 +1,6 @@
 import { Sequencer } from './parentSequencer'
 import * as Tone from 'tone'
+import { Player } from 'tone';
 
 class DrumSequencer extends Sequencer {
     constructor(rows, numSteps) {
@@ -19,6 +20,12 @@ class DrumSequencer extends Sequencer {
         const hiHat = document.getElementById('hihat');
         const snare = document.getElementById('snare');
         const kick = document.getElementById('kick');
+        // https://github.com/Kernapillar/4-block-loop/tree/main/src/drum_samples
+
+        // const hiHat2 = new Player("https://github.com/mbardin/PDM-resources/blob/main/docs/media/sound_samples/rhythmic_effects/Bubbles.mp3")
+        // const hiHat = new Player("https://github.com/Kernapillar/4-block-loop/tree/main/src/drum_samples")
+        // const snare = new Player("https://github.com/Kernapillar/4-block-loop/tree/main/src/drum_samples")
+        // const kick = new Player("https://github.com/Kernapillar/4-block-loop/tree/main/src/drum_samples")        
         soundsArr.push(hiHat2);
         soundsArr.push(hiHat);
         soundsArr.push(snare);
