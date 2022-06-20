@@ -22,7 +22,10 @@ import { DrumSequencer } from './scripts/drumSequencer';
         // color coded canvas visualizer?
 
 document.addEventListener("DOMContentLoaded", () => {
-    
+
+    console.log(Tone.ToneAudioBuffer.supportsType("/scripts/drum_samples/hihat.mp3"))
+
+
     // setup time and looping 
     let beat = 0;
     let steps = 16;
@@ -52,6 +55,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const repeat = (time) => {
             sequencerArr.forEach(seq => {
                 seq.playNotes(everyOther, beat, time)
+                drums.playNotes(everyOther, beat, time)
                 beat = (beat + 1) % steps
                 if (beat === 0) {
                     if (everyOther) {

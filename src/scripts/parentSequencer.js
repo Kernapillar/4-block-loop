@@ -28,7 +28,7 @@ class Sequencer {
             lane.id = `${rIdx}`;
             lane.className = "seq-row";
             row.forEach((unusedVar, nIdx) => {
-                const seqNode = document.createElement('buton');
+                const seqNode = document.createElement('button');
                 seqNode.className = 'node'
                 seqNode.classList.add(`col-${nIdx}`)
                 seqNode.addEventListener('click', (e) => {
