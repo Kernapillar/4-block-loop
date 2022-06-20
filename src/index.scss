@@ -8,7 +8,7 @@ h1 {
 button {
     cursor: pointer;
 }
-#synth-container {
+.container {
     display: inline-flex;
     background-color: grey;
 }
@@ -18,7 +18,7 @@ button {
     justify-content: center;
 }
 
-#test-grid{
+.grid{
     display: block;
     
 }

@@ -1,9 +1,8 @@
 import { Sequencer } from './parentSequencer'
 import * as Tone from 'tone'
-import { Volume } from 'tone';
 
 
-class synthSequencer extends Sequencer {
+class SynthSequencer extends Sequencer {
     constructor(rows, numSteps, scale){
         super(rows, numSteps);
         this.scale = scale;
@@ -43,4 +42,4 @@ class synthSequencer extends Sequencer {
     
 }
 
-export {synthSequencer}; 
+export {SynthSequencer}; 

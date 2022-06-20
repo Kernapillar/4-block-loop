@@ -39,7 +39,7 @@ class Sequencer {
             seqContainer.appendChild(lane);
         })
     }
-    //  renders the options for the sequencer
+    //  renders the options for the sequencer (hardcode buttons)
     renderControls(container) {
         const controlContainer = document.getElementById(`${container}`);
         const clearButton = document.createElement('button')

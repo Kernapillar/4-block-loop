@@ -1,12 +1,13 @@
 // entry file for JS
 import { Sequencer } from './scripts/parentSequencer'
-import { synthSequencer } from './scripts/synthSequencer'
+import { SynthSequencer } from './scripts/synthSequencer'
 import * as Tone from 'tone'
+import { DrumSequencer } from './scripts/drumSequencer';
 
 // to do: 
-    // set up sequencer full clear 
-            // add sequencer scan indicator     
-    // add global volume control 
+      
+    // seperate the "clear all" for each synth
+        // removes visuals but keeps the nodes playing
     // add drums sequencer
         // define Playnotes for the drumsequencer!!!
         //  
@@ -32,14 +33,19 @@ document.addEventListener("DOMContentLoaded", () => {
  
     // initialize sequencers here 
     const notes = ["C4", "D4", "E4", "F4", "G4", "A4", "B4", "C5"]
-    const seqTest = new synthSequencer(8, steps, notes);
+    const seq = new SynthSequencer(8, steps, notes);
+    const drums = new DrumSequencer(4, steps)
 
     // must pass in the html container element when calling render
-    seqTest.renderGrid('test-grid');
-    seqTest.renderControls('clear')
+
+    drums.renderGrid("drums-grid")
+    drums.renderControls("drum-controls")
+
+    seq.renderGrid('synth-grid');
+    seq.renderControls('synth-clear')
 
     // add sequencer to the sequencer array:
-    const sequencerArr = [seqTest];
+    const sequencerArr = [seq];
 
 
     const playLoop = () => {
@@ -94,10 +100,17 @@ document.addEventListener("DOMContentLoaded", () => {
         
     })
     volume.volume.value = 0;
-    
     const volSlider = document.getElementById('volume-slider');
     volSlider.oninput = () => {
-        volume.volume.value = volSlider.value
+        volume.volume.value = volSlider.value}
+    
+        // global bpm control
+    const bpmSlider = document.getElementById('bpm-slider');
+    bpmSlider.oninput = () => {
+        Tone.Transport.bpm.value = bpmSlider.value
+        let bpmIndicator = document.getElementById('bpm-indicator')
+        let currentBpm = Math.floor(Tone.Transport.bpm.value)
+        bpmIndicator.innerText = `bpm: ${currentBpm}`
     }
 
 })

@@ -11,30 +11,36 @@
   </head>
 
   <body>
-    <h1>content!</h1>
+    <h1>4 block loop!</h1>
     <button id="test-button">tone tester</button>
-    <div class="drumkit">
-      <button id="kick">Kick</button>
-      <button id="snare">snare</button>
-      <button id="hihat">hihat</button>
-    </div>
+   
 
 
-    <button id="play-pause">Play</button>
-    <button id="volume-button">mute</button>
+<div id="drumkit">
+  <div class= "controls" id="drum-controls"></div>
+  <div id="drum-clear"></div>
+  <div class="grid" id="drums-grid"></div>
+</div>
+    
 
-<div id="synth-container">
-  <div id="synth-controls"></div>
-  <div id="clear"></div>
-  <div id="test-grid">
-    </div>
+<div class="container" id="synth-container">
+  <div class= "controls" id="synth-controls"></div>
+  <div id="synth-clear"></div>
+  <div class="grid" id="synth-grid">
+  </div>
     
 </div>
 
-    
-<label><div class="font-control">volume</div>
+    <button id="play-pause">Play</button>
+    <button id="volume-button">mute</button>
+<label><div>volume</div>
   <input type="range" min="-20" max="1" step="1" value="-6" id="volume-slider">
 </label>
+
+<label><div id="bpm-indicator">bpm: 120</div>
+  <input type="range" min="60" max="180" step="1" value="120" id="bpm-slider">
+</label>
+
   </body>
 
 </html>
