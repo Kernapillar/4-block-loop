@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
     Tone.Transport.bpm.value = 120;
  
     // initialize sequencers here 
-    const notes = ["C4", "D4", "E4", "F4", "G4", "A4", "B4", "C5"]
+    const notes = ["C2", "D2", "E2", "F2", "G2", "A2", "B2", "C3"]
     const seq = new SynthSequencer(8, steps, notes);
     const drums = new DrumSequencer(4, steps)
 
