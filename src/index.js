@@ -5,7 +5,7 @@ import * as Tone from 'tone'
 
 // to do: 
     // set up sequencer full clear 
-    // add sequencer scan indicator 
+            // add sequencer scan indicator     
     // add global volume control 
     // add drums sequencer
         // define Playnotes for the drumsequencer!!!
@@ -13,6 +13,7 @@ import * as Tone from 'tone'
     // add chords Sequencer
     
     // research synth sounds to use
+    // implement the playable piano
     // CSS style! 
 
     // if there is time: 
@@ -34,7 +35,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const seqTest = new synthSequencer(8, steps, notes);
 
     // must pass in the html container element when calling render
-    seqTest.renderSequencer('test-grid');
+    seqTest.renderGrid('test-grid');
+    seqTest.renderControls('clear')
 
     // add sequencer to the sequencer array:
     const sequencerArr = [seqTest];
@@ -57,7 +59,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    // setup play and pause controls
+    // setup play and pause controls 
     const playPause = document.getElementById("play-pause");
     playPause.addEventListener("click", (e) => {
         if (!started) {
@@ -75,9 +77,27 @@ document.addEventListener("DOMContentLoaded", () => {
         } else {
             e.target.innerText = "Pause"
             Tone.Transport.start();
+            Tone.start()
             playing = true;
         }
     })
+
+    // global volume control/mute
+    const volume = Tone.Destination;
+    const volumeButton = document.getElementById("volume-button");
+    volumeButton.addEventListener("click", (e) => {
+        if (volume.mute) {
+            volume.mute = false;
+        } else {
+            volume.mute = true;
+        }
+        
+    })
+    volume.volume.value = 0;
     
+    const volSlider = document.getElementById('volume-slider');
+    volSlider.oninput = () => {
+        volume.volume.value = volSlider.value
+    }
 
 })

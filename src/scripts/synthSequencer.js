@@ -1,5 +1,6 @@
 import { Sequencer } from './parentSequencer'
 import * as Tone from 'tone'
+import { Volume } from 'tone';
 
 
 class synthSequencer extends Sequencer {
@@ -19,8 +20,6 @@ class synthSequencer extends Sequencer {
             let synth = new Tone.Synth({ oscillator: { type: "square8" } }).toDestination();
             synths.push(synth);
         }
-        console.log(synths)
-        console.log("why is this repeating?")
         return synths;
     }
 
@@ -41,9 +40,7 @@ class synthSequencer extends Sequencer {
     }
 
 
-    fullClear() {
-
-    }
+    
 }
 
 export {synthSequencer}; 

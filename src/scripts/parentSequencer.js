@@ -21,7 +21,7 @@ class Sequencer {
         
     }
     // renders the sequencer in the browser, adds event listeners to the nodes
-    renderSequencer(container) {
+    renderGrid(container) {
         const seqContainer = document.getElementById(`${container}`);
         this.grid.forEach((row, rIdx) => {
             const lane = document.createElement('div');
@@ -37,9 +37,17 @@ class Sequencer {
                 lane.appendChild(seqNode);
             }) 
             seqContainer.appendChild(lane);
-
         })
-        
+    }
+    //  renders the options for the sequencer
+    renderControls(container) {
+        const controlContainer = document.getElementById(`${container}`);
+        const clearButton = document.createElement('button')
+        clearButton.innerText = "clear all"
+        clearButton.addEventListener('click', (e)=> {
+            this.clearAll();
+        })
+        controlContainer.appendChild(clearButton);
     }
     
     // helper function to remove "selected" classes from a node
@@ -67,8 +75,15 @@ class Sequencer {
         
     }
     clearAll() {
-        this.grid.flat.forEach(node => node.stateToggle(true))
-        const nodes = document.getElementsByClassName('node');
+        for (let i = 0; i < this.grid.length; i++) {
+            const row = this.grid[i];
+            for (let j = 0; j < row.length; j++) {
+                const node = row[j];
+                node.stateToggle(true)
+            }
+        }
+        const htmlNodes = document.getElementsByClassName('node');
+        const nodes = [...htmlNodes]
         nodes.forEach(node => {
             this.removeNodeClasses(node);
         })
@@ -84,24 +99,39 @@ class Sequencer {
                 curNode.classList.remove('current-beat')
             }, 200)  
         }
-
-    // why doesnt this work? 
-    // seqScanToggle(curBeat) {
-    //     const nodeColumn = document.getElementsByClassName(`col-${curBeat}`)
-    //     for (let i = 0; i < nodeColumn.length; i++) {
-    //         let j = i - 1
-    //         if (j === -1) j = 15
-    //         const curNode = nodeColumn[i];
-    //         const prevNode = nodeColumn[j];
-    //         curNode.classList.add('current-beat')
-    //         if (prevNode.classList.contains('current-beat')) {
-    //             prevNode.classList.remove('current-beat')
-    //         }
-        
-    //     }
-    // }
-
     }
+        // why doesnt this work? 
+            // seqScanToggle(curBeat) {
+            //     const nodeColumn = document.getElementsByClassName(`col-${curBeat}`)
+            //     for (let i = 0; i < nodeColumn.length; i++) {
+            //         let j = i - 1
+            //         if (j === -1) j = 15
+            //         const curNode = nodeColumn[i];
+            //         const prevNode = nodeColumn[j];
+            //         curNode.classList.add('current-beat')
+            //         if (prevNode.classList.contains('current-beat')) {
+            //             prevNode.classList.remove('current-beat')
+            //         }
+                
+            //     }
+            // }
+
+    toneTester() {
+        for (let i = 0; i < this.grid.length; i++) {
+            const row = this.grid[i];
+            for (let j = 0; j < row.length; j++) {
+                const node = row[j];
+                node.stateToggle()
+            }
+        }
+        const htmlNodes = document.getElementsByClassName('node');
+        const nodes = [...htmlNodes]
+        nodes.forEach(node => {
+            node.classList.add('selected');
+        })
+     }
+    
+   
 
 
 };
