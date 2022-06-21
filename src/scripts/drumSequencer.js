@@ -3,8 +3,8 @@ import * as Tone from 'tone'
 import { Player } from 'tone';
 
 class DrumSequencer extends Sequencer {
-    constructor(rows, numSteps) {
-        super(rows, numSteps)
+    constructor(rows, numSteps, container) {
+        super(rows, numSteps, container)
         this.samples = this.setSamples();
     }
 

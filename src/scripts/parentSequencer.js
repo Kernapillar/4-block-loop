@@ -2,8 +2,9 @@ import { Node } from './node'
 import * as Tone from 'tone'
 
 class Sequencer {
-    constructor (rows, numSteps) {
+    constructor (rows, numSteps, container) {
         this.grid = this.createGrid(rows, numSteps);
+        this.container = container;
     }
 
     
@@ -85,7 +86,10 @@ class Sequencer {
         const htmlNodes = document.getElementsByClassName('node');
         const nodes = [...htmlNodes]
         nodes.forEach(node => {
-            this.removeNodeClasses(node);
+            console.log(node.parentElement.parentElement.id)
+            if (node.parentElement.parentElement.id === this.container) {
+                this.removeNodeClasses(node);
+            }
         })
     }
     
@@ -116,20 +120,6 @@ class Sequencer {
             //     }
             // }
 
-    toneTester() {
-        for (let i = 0; i < this.grid.length; i++) {
-            const row = this.grid[i];
-            for (let j = 0; j < row.length; j++) {
-                const node = row[j];
-                node.stateToggle()
-            }
-        }
-        const htmlNodes = document.getElementsByClassName('node');
-        const nodes = [...htmlNodes]
-        nodes.forEach(node => {
-            node.classList.add('selected');
-        })
-     }
     
    
 

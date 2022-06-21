@@ -3,8 +3,8 @@ import * as Tone from 'tone'
 
 
 class SynthSequencer extends Sequencer {
-    constructor(rows, numSteps, scale){
-        super(rows, numSteps);
+    constructor(rows, numSteps, container, scale){
+        super(rows, numSteps, container);
         this.scale = scale;
         this.synths = this.createSynths(rows);
     }

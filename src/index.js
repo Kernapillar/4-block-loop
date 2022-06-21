@@ -1,16 +1,13 @@
 // entry file for JS
-import { Sequencer } from './scripts/parentSequencer'
-import { SynthSequencer } from './scripts/synthSequencer'
-import * as Tone from 'tone'
+import * as Tone from 'tone';
+import { SynthSequencer } from './scripts/synthSequencer';
 import { DrumSequencer } from './scripts/drumSequencer';
+import {KeyboardPlayer} from './scripts/KeyboardPlayer';
 
 // to do: 
-      
-    // seperate the "clear all" for each synth
-        // removes visuals but keeps the nodes playing
-    // add drums sequencer
-        // define Playnotes for the drumsequencer!!!
-        //  
+        
+    // fillout the controls for sequencers/setup double mode
+
     // add chords Sequencer
     
     // research synth sounds to use
@@ -23,7 +20,6 @@ import { DrumSequencer } from './scripts/drumSequencer';
 
 document.addEventListener("DOMContentLoaded", () => {
 
-
     // setup time and looping 
     let beat = 0;
     let steps = 16;
@@ -31,24 +27,23 @@ document.addEventListener("DOMContentLoaded", () => {
     let playing = false;
     let started = false;
     Tone.Transport.bpm.value = 120;
- 
+
+
     // initialize sequencers here 
-    const notes = ["C2", "D2", "E2", "F2", "G2", "A2", "B2", "C3"]
-    const seq = new SynthSequencer(8, steps, notes);
-    const drums = new DrumSequencer(4, steps)
-
-    // must pass in the html container element when calling render
-
+    const notes = ["C2", "D2", "E2", "F2", "G2", "A2", "B2", "C3"].reverse()
+    const seq = new SynthSequencer(8, steps,'synth-grid', notes);
+    seq.renderGrid('synth-grid');
+    seq.renderControls('synth-clear')
+    
+    const drums = new DrumSequencer(4, steps, "drums-grid")
     drums.renderGrid("drums-grid")
     drums.renderControls("drum-controls")
 
-    seq.renderGrid('synth-grid');
-    seq.renderControls('synth-clear')
+    const scale = ["B1", "C2", "D2", "E2", "F2", "G2", "A2", "B2", "C3", "D3", "E3", "F3", "G3", "A3", "B3", "C4"]
+    const keyboard = new KeyboardPlayer(scale)
 
-    // add sequencer to the sequencer array:
-    const sequencerArr = [seq];
-
-
+    
+    // sequencer play loop
     const playLoop = () => {
         const repeat = (time) => {
             seq.playNotes(everyOther, beat, time)
@@ -63,6 +58,18 @@ document.addEventListener("DOMContentLoaded", () => {
         }
         Tone.Transport.scheduleRepeat(repeat, '8n')    
     }
+
+
+   // keyboard input handler
+   document.addEventListener('keydown', (e) => {
+    if (!(e.key in keyboard.KEYMAP)) return
+        if (e.repeat) return
+        keyboard.playNotes(e.key);
+    })
+    document.addEventListener('keyup', (e) => {
+        if (!(e.key in keyboard.KEYMAP)) return
+        keyboard.stopNotes(e.key);
+    })
 
 
     // setup play and pause controls 
@@ -88,6 +95,9 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     })
 
+
+
+
     // global volume control/mute
     const volume = Tone.Destination;
     const volumeButton = document.getElementById("volume-button");
@@ -104,7 +114,7 @@ document.addEventListener("DOMContentLoaded", () => {
     volSlider.oninput = () => {
         volume.volume.value = volSlider.value}
     
-        // global bpm control
+    // global bpm control
     const bpmSlider = document.getElementById('bpm-slider');
     bpmSlider.oninput = () => {
         Tone.Transport.bpm.value = bpmSlider.value
