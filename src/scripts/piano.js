@@ -19,6 +19,7 @@ const piano = new Tone.Sampler({
 }).toDestination();
 
 piano.volume.value = -12
+piano.release = 2
 console.log(piano.volume.value)
 
 export {piano};

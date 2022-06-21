@@ -46,6 +46,9 @@ class KeyboardPlayer {
     playNotes(key) {
         const note = this.scale[this.KEYMAP[key]]
         this.instrument.triggerAttack(note, Tone.context.currentTime)
+        keyPressed = document.getElementById(key)
+        keyPressed.classList.add('')
+
     }
     stopNotes(key){
         const note = this.scale[this.KEYMAP[key]]
