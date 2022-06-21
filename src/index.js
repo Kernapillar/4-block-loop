@@ -51,17 +51,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const playLoop = () => {
         const repeat = (time) => {
-            sequencerArr.forEach(seq => {
-                seq.playNotes(everyOther, beat, time)
-                drums.playNotes(everyOther, beat, time)
-                beat = (beat + 1) % steps
-                if (beat === 0) {
-                    if (everyOther) {
-                        everyOther = false  
-                    } else {
-                        everyOther = true
-                    }} 
-            })
+            seq.playNotes(everyOther, beat, time)
+            drums.playNotes(everyOther, beat, time)
+            beat = (beat + 1) % steps
+            if (beat === 0) {
+                if (everyOther) {
+                    everyOther = false  
+                } else {
+                    everyOther = true
+                }} 
         }
         Tone.Transport.scheduleRepeat(repeat, '8n')    
     }

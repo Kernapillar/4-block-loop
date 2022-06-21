@@ -34,6 +34,11 @@ button {
     cursor: pointer;
 }
 
+.node:nth-child(4n+1) {
+    margin-left: 10px;
+    // background-color: rgb(78, 89, 101);
+}
+
 .selected {
     border: 1px solid black;
     background-color: yellow;

@@ -40,6 +40,10 @@ button {
   cursor: pointer;
 }
 
+.node:nth-child(4n+1) {
+  margin-left: 10px;
+}
+
 .selected {
   border: 1px solid black;
   background-color: yellow;

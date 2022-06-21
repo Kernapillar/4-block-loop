@@ -28,10 +28,10 @@ class DrumSequencer extends Sequencer {
             let sample = this.samples[i]
             this.seqScanToggle(curBeat)
             if (this.grid[i][curBeat].state === 1) {
-                sample.currentTime = 0
+                // sample.currentTime = 0
                 sample.start(time);            }
             if (everyOther && this.grid[i][curBeat].state === 2) {
-                sample.currentTime = 0
+                // sample.currentTime = 0
                 sample.start(time);
             }
             
