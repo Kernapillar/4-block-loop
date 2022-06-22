@@ -11,44 +11,28 @@
   </head>
 
   <body>
-    <h1>4 block loop!</h1>
+    <header>
+      <h1>4 block loop!</h1>
+
+    </header>
    
 
 <main id="main-blocks">
    
 
 <div class = "container" id="drumkit">
-    <h2>drums</h2>
-    <div class= "controls" id="drum-controls"></div>
-    <div id="drum-clear"></div>
-    <div class="grid" id="drums-grid"></div>
-  
+    <div class= "controls left" id="drum-controls">
+       <h2>Drums</h2>
+       <div id="drum-clear"></div> 
+    </div>
+    <div class="grid right" id="drums-grid"></div>
 </div>
     
-<br>
-<div class="container" id="synth-container">
-  <h2>bass</h2>
-  <div class= "controls" id="synth-controls"></div>
-  <div id="synth-clear"></div>
-  <div class="grid" id="synth-grid">
+
+<div class="container keyboard">
+  <div class= "controls" id="keyboard-controls">
+    <h2>Keyboard</h2>
   </div>
-    
-</div>
-<br>
-<div class="container" id="chord-container">
-  <h2>chords</h2>
-  <div class= "controls" id="chord-controls"></div>
-  <div id="chord-clear"></div>
-  <div class="grid" id="chord-grid">
-  </div>
-    
-</div>
-<br>
-
-
-
-<div class="keyboard">
-  
   <ul class="keyboard-row">
     <li class="large inactive keyboard-node" id="tab">TAB</li>
     <li class="keyboard-node" id="q">Q</li>
@@ -94,30 +78,57 @@
     <li class="keyboard-node" id="/">/</li>
     <li class="largest inactive keyboard-node" id="right-shift">SHIFT</li>
   </ul>
-
+  
 </div>
 
+
+<div class="container" id="bass-container">
+  <div class= "controls left" id="bass-controls">
+      <h2>Bass</h2>
+      <div id="bass-clear"></div>
+    </div>
+    <div class="grid right" id="bass-grid">
+    </div>
+</div>
+
+
+<div class="container" id="chord-container">
+
+  <div class= "controls left" id="chord-controls">
+    <h2>Chords</h2>
+    <div id="chord-clear"></div>
+  </div>
+
+  <div class="grid left" id="chord-grid"></div>
+</div>
+
+
+
+
 </main>
-<button id="play-pause">Play</button>
-<button id="volume-button">mute</button>
-<button id="extended-mode">Extended Mode</button>
 
-<label><div>volume</div>
-<input type="range" min="-20" max="0" step="1" value="-10" id="volume-slider">
-</label>
+<footer>
+ 
+  <h3>Global Controls</h3>
+  <button id="play-pause">Play</button>
+  <button id="volume-button">Mute</button>
+  <button id="extended-mode">Extended Mode</button>
+  
+  <label><div>Master Volume</div>
+  <input type="range" min="-20" max="0" step="1" value="-10" id="volume-slider">
+  </label>
+  
+  <label><div id="bpm-indicator">Beats Per Minute: 120</div>
+  <input type="range" min="60" max="180" step="1" value="120" id="bpm-slider">
+  </label>
 
-<label><div id="bpm-indicator">bpm: 120</div>
-<input type="range" min="60" max="180" step="1" value="120" id="bpm-slider">
-</label>
+
+</footer>
 
 
 
-<!-- <div id="gridtest">
-  <div class="box"></div>
-  <div class="box"></div>
-  <div class="box"></div>
-  <div class="box"></div>
-</div> -->
+
+
 
 </body>
 

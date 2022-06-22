@@ -32,12 +32,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // initialize sequencers here 
     const bassNotes = ["C2", "D2", "E2", "F2", "G2", "A2", "B2", "C3"].reverse()
-    const sequencer = new SynthSequencer(8, steps,'synth-grid', bassNotes);
-    sequencer.renderGrid('synth-grid');
-    sequencer.renderControls('synth-clear')
+    const sequencer = new SynthSequencer(8, steps,'bass-grid', bassNotes);
+    sequencer.renderGrid('bass-grid');
+    sequencer.renderControls('bass-clear')
 
     const chordNotes = ["C4", "D4", "E4", "F4", "G4", "A4", "B4", "C5"].reverse()
-    const chords = new ChordSequencer(8, steps,'chord-grid', chordNotes);
+    const chords = new ChordSequencer(8, (Math.floor(steps / 4)),'chord-grid', chordNotes);
     chords.renderGrid('chord-grid');
     chords.renderControls('chord-clear')
     
@@ -48,7 +48,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const scale = ["B1", "C2", "D2", "E2", "F2", "G2", "A2", "B2", "C3", "D3", "E3", "F3", "G3", "A3", "B3", "C4"]
     const keyboard = new KeyboardPlayer(scale)
 
-    const sequencersArr = [sequencer, drums];
+    const sequencersArr = [sequencer, drums, chords];
     
     // global sequencer play loop
     const playLoop = () => {

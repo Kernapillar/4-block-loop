@@ -4,13 +4,13 @@ import * as Tone from 'tone'
 class KeyboardPlayer {
     constructor (scale) {
         // this.instrument = instrument;
-        // this.instrument = piano
+        this.instrument = piano
 
-        this.instrument =  new Tone.PolySynth(Tone.AMSynth)
-        let distortion =  new Tone.Distortion(0.8);
-        let reverb = new Tone.Freeverb(0.1, 3000);
-        let delay = new Tone.PingPongDelay('16n', 0.1);
-        this.instrument.chain(delay, reverb).toDestination();
+        // this.instrument =  new Tone.PolySynth(Tone.AMSynth)
+        // let distortion =  new Tone.Distortion(0.8);
+        // let reverb = new Tone.Freeverb(0.1, 3000);
+        // let delay = new Tone.PingPongDelay('16n', 0.1);
+        // this.instrument.chain(delay, reverb).toDestination();
 
 
         // this.instrument = new Tone.PolySynth(Tone.Synth,

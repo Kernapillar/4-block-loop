@@ -49,7 +49,7 @@ class Sequencer {
     renderControls(container) {
         const controlContainer = document.getElementById(`${container}`);
         const clearButton = document.createElement('button')
-        clearButton.innerText = "clear all"
+        clearButton.innerText = "Clear"
         clearButton.addEventListener('click', (e)=> {
             this.clearAll();
         })
