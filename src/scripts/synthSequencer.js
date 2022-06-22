@@ -16,11 +16,41 @@ class SynthSequencer extends Sequencer {
     createSynths (count) {
         const synths = [];
         for (let i = 0; i < count; i++) {
-            let synth = new Tone.Synth({ oscillator: { type: "square8" } }).toDestination();
+            let synth = new Tone.MonoSynth(
+
+                {
+                    "oscillator": {
+                        "type": "fmsquare5",
+                        "modulationType" : "triangle",
+                          "modulationIndex" : 2,
+                          "harmonicity" : 0.501
+                    },
+                    "filter": {
+                        "Q": 1,
+                        "type": "lowpass",
+                        "rolloff": -24
+                    },
+                    "envelope": {
+                        "attack": 0.01,
+                        "decay": 0.1,
+                        "sustain": 0.4,
+                        "release": 2
+                    },
+                    "filterEnvelope": {
+                        "attack": 0.01,
+                        "decay": 0.1,
+                        "sustain": 0.8,
+                        "release": 1.5,
+                        "baseFrequency": 50,
+                        "octaves": 4.4
+                    }
+                }).toDestination()
             synths.push(synth);
-        }
+        };
         return synths;
-    }
+        }
+
+    
 
     // plays active notes on the current beat
     playNotes(everyOther, curBeat, time) {
@@ -33,6 +63,9 @@ class SynthSequencer extends Sequencer {
                 synth.triggerAttackRelease(note, '8n', time)
             }
             if (everyOther && this.grid[i][curBeat].state === 2) {
+                synth.triggerAttackRelease(note, '8n', time)
+            }
+            if (!everyOther && this.grid[i][curBeat].state === 3) {
                 synth.triggerAttackRelease(note, '8n', time)
             }
         }

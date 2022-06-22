@@ -5,9 +5,14 @@ class Sequencer {
     constructor (rows, numSteps, container) {
         this.grid = this.createGrid(rows, numSteps);
         this.container = container;
+        this.extendedMode = false
     }
 
-    
+    extendedModeToggle() {
+        if (this.extendedMode) {
+            this.extendedMode = false
+        } else this.extendedMode = true
+    }
 
     // creates the grid and initiates node objects in each row for each step
     createGrid (numRows, numSteps) {
@@ -33,7 +38,7 @@ class Sequencer {
                 seqNode.className = 'node'
                 seqNode.classList.add(`col-${nIdx}`)
                 seqNode.addEventListener('click', (e) => {
-                    this.clickToggle(rIdx, nIdx, e);
+                    this.clickToggle(rIdx, nIdx, e, this.extendedMode);
                 })
                 lane.appendChild(seqNode);
             }) 
@@ -57,19 +62,24 @@ class Sequencer {
             htmlNode.classList.remove('selected');
         } else if (htmlNode.classList.contains('selected-2')) {
             htmlNode.classList.remove('selected-2');
-    }
-   }
+    } else if (htmlNode.classList.contains('selected-3')) {
+        htmlNode.classList.remove('selected-3');
+   }}
 
     // toggle logic when you activate/deactivate a node
-    clickToggle(rIdx, nIdx, e) {
+    // if extendedMode = true, allow selected 2 and 3 in the cycle, else just selected/none
+    clickToggle(rIdx, nIdx, e, extendedMode) {
         const currentNode = this.grid[rIdx][nIdx]
-        currentNode.stateToggle();
+        currentNode.stateToggle(extendedMode);
         if (currentNode.state === 1) {
             this.removeNodeClasses(e.target);
             e.target.classList.add('selected');
         } else if (currentNode.state === 2) {
             this.removeNodeClasses(e.target);
             e.target.classList.add('selected-2')
+        } else if (currentNode.state === 3) {
+            this.removeNodeClasses(e.target);
+            e.target.classList.add('selected-3')
         } else {
             this.removeNodeClasses(e.target);
         }
@@ -80,13 +90,12 @@ class Sequencer {
             const row = this.grid[i];
             for (let j = 0; j < row.length; j++) {
                 const node = row[j];
-                node.stateToggle(true)
+                node.stateToggle(this.extendedMode, true)
             }
         }
         const htmlNodes = document.getElementsByClassName('node');
         const nodes = [...htmlNodes]
         nodes.forEach(node => {
-            console.log(node.parentElement.parentElement.id)
             if (node.parentElement.parentElement.id === this.container) {
                 this.removeNodeClasses(node);
             }
@@ -104,22 +113,6 @@ class Sequencer {
             }, 200)  
         }
     }
-        // why doesnt this work? 
-            // seqScanToggle(curBeat) {
-            //     const nodeColumn = document.getElementsByClassName(`col-${curBeat}`)
-            //     for (let i = 0; i < nodeColumn.length; i++) {
-            //         let j = i - 1
-            //         if (j === -1) j = 15
-            //         const curNode = nodeColumn[i];
-            //         const prevNode = nodeColumn[j];
-            //         curNode.classList.add('current-beat')
-            //         if (prevNode.classList.contains('current-beat')) {
-            //             prevNode.classList.remove('current-beat')
-            //         }
-                
-            //     }
-            // }
-
     
    
 

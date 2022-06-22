@@ -1,6 +1,7 @@
 // entry file for JS
 import * as Tone from 'tone';
 import { SynthSequencer } from './scripts/synthSequencer';
+import { ChordSequencer } from './scripts/chordSequencer';
 import { DrumSequencer } from './scripts/drumSequencer';
 import {KeyboardPlayer} from './scripts/KeyboardPlayer';
 
@@ -30,10 +31,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     // initialize sequencers here 
-    const notes = ["C2", "D2", "E2", "F2", "G2", "A2", "B2", "C3"].reverse()
-    const seq = new SynthSequencer(8, steps,'synth-grid', notes);
-    seq.renderGrid('synth-grid');
-    seq.renderControls('synth-clear')
+    const bassNotes = ["C2", "D2", "E2", "F2", "G2", "A2", "B2", "C3"].reverse()
+    const sequencer = new SynthSequencer(8, steps,'synth-grid', bassNotes);
+    sequencer.renderGrid('synth-grid');
+    sequencer.renderControls('synth-clear')
+
+    const chordNotes = ["C4", "D4", "E4", "F4", "G4", "A4", "B4", "C5"].reverse()
+    const chords = new ChordSequencer(8, steps,'chord-grid', chordNotes);
+    chords.renderGrid('chord-grid');
+    chords.renderControls('chord-clear')
     
     const drums = new DrumSequencer(4, steps, "drums-grid")
     drums.renderGrid("drums-grid")
@@ -42,12 +48,14 @@ document.addEventListener("DOMContentLoaded", () => {
     const scale = ["B1", "C2", "D2", "E2", "F2", "G2", "A2", "B2", "C3", "D3", "E3", "F3", "G3", "A3", "B3", "C4"]
     const keyboard = new KeyboardPlayer(scale)
 
+    const sequencersArr = [sequencer, drums];
     
-    // sequencer play loop
+    // global sequencer play loop
     const playLoop = () => {
         const repeat = (time) => {
-            seq.playNotes(everyOther, beat, time)
+            sequencer.playNotes(everyOther, beat, time)
             drums.playNotes(everyOther, beat, time)
+            chords.playNotes(everyOther, beat, time)
             beat = (beat + 1) % steps
             if (beat === 0) {
                 if (everyOther) {
@@ -95,7 +103,13 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     })
 
-
+    // Extended Mode toggle control
+    const extendButton = document.getElementById("extended-mode");
+    extendButton.addEventListener("click", (e) => {
+        sequencersArr.forEach(sequencer => {
+            sequencer.extendedModeToggle()
+        })
+    })
 
 
     // global volume control/mute

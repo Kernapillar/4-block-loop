@@ -18,8 +18,7 @@ const piano = new Tone.Sampler({
     baseUrl: "https://kernapillar.github.io/4-block-loop/src/piano_samples/"
 }).toDestination();
 
-piano.volume.value = -12
+piano.volume.value = -6
 piano.release = 2
-console.log(piano.volume.value)
 
 export {piano};

@@ -13,19 +13,21 @@
   <body>
     <h1>4 block loop!</h1>
    
+
+<main id="main-blocks">
    
 
-<h2>drums</h2>
 <div class = "container" id="drumkit">
-  <div class= "controls" id="drum-controls"></div>
-  <div id="drum-clear"></div>
-  <div class="grid" id="drums-grid"></div>
+    <h2>drums</h2>
+    <div class= "controls" id="drum-controls"></div>
+    <div id="drum-clear"></div>
+    <div class="grid" id="drums-grid"></div>
   
 </div>
     
 <br>
-<h2>bass</h2>
 <div class="container" id="synth-container">
+  <h2>bass</h2>
   <div class= "controls" id="synth-controls"></div>
   <div id="synth-clear"></div>
   <div class="grid" id="synth-grid">
@@ -33,23 +35,22 @@
     
 </div>
 <br>
-    <button id="play-pause">Play</button>
-    <button id="volume-button">mute</button>
-
-<label><div>volume</div>
-  <input type="range" min="-20" max="0" step="1" value="-10" id="volume-slider">
-</label>
-
-<label><div id="bpm-indicator">bpm: 120</div>
-  <input type="range" min="60" max="180" step="1" value="120" id="bpm-slider">
-</label>
+<div class="container" id="chord-container">
+  <h2>chords</h2>
+  <div class= "controls" id="chord-controls"></div>
+  <div id="chord-clear"></div>
+  <div class="grid" id="chord-grid">
+  </div>
+    
+</div>
+<br>
 
 
 
 <div class="keyboard">
   
   <ul class="keyboard-row">
-    <li class="large keyboard-node" id="tab">TAB</li>
+    <li class="large inactive keyboard-node" id="tab">TAB</li>
     <li class="keyboard-node" id="q">Q</li>
     <li class="keyboard-node" id="w">W</li>
     <li class="root keyboard-node" id="e">E</li>
@@ -60,12 +61,12 @@
     <li class="keyboard-node" id="i">I</li>
     <li class="keyboard-node" id="o">O</li>
     <li class="root keyboard-node" id="p">P</li>
-    <li class="keyboard-node" >[</li>
-    <li class="keyboard-node" >]</li>
-    <li class="keyboard-node" >\</li>
+    <li class="inactive keyboard-node" >[</li>
+    <li class="inactive keyboard-node" >]</li>
+    <li class="inactive keyboard-node" >\</li>
   </ul>
   <ul class="keyboard-row">
-    <li class="larger keyboard-node" id="caps">CAPS</li>
+    <li class="larger inactive keyboard-node" id="caps">CAPS</li>
     <li class="keyboard-node" id="a">A</li>
     <li class="keyboard-node" id="s">S</li>
     <li class="keyboard-node" id="d">D</li>
@@ -76,11 +77,11 @@
     <li class="keyboard-node" id="k">K</li>
     <li class="keyboard-node" id="l">L</li>
     <li class="keyboard-node" id=";">;</li>
-    <li class="keyboard-node" id="'">'</li>
-    <li class="larger keyboard-node" id="enter">ENTER</li>
+    <li class=" inactive keyboard-node" id="'">'</li>
+    <li class="larger inactive keyboard-node" id="enter">ENTER</li>
   </ul>
   <ul class="keyboard-row">
-    <li class="largest keyboard-node" id="left-shift">SHIFT</li>
+    <li class="largest inactive keyboard-node" id="left-shift">SHIFT</li>
     <li class="keyboard-node" id="z">Z</li>
     <li class="root keyboard-node" id="x">X</li>
     <li class="keyboard-node" id="c">C</li>
@@ -91,11 +92,33 @@
     <li class="keyboard-node" id=",">,</li>
     <li class="root keyboard-node" id=".">.</li>
     <li class="keyboard-node" id="/">/</li>
-    <li class="largest keyboard-node" id="right-shift">SHIFT</li>
+    <li class="largest inactive keyboard-node" id="right-shift">SHIFT</li>
   </ul>
+
 </div>
 
+</main>
+<button id="play-pause">Play</button>
+<button id="volume-button">mute</button>
+<button id="extended-mode">Extended Mode</button>
 
-  </body>
+<label><div>volume</div>
+<input type="range" min="-20" max="0" step="1" value="-10" id="volume-slider">
+</label>
+
+<label><div id="bpm-indicator">bpm: 120</div>
+<input type="range" min="60" max="180" step="1" value="120" id="bpm-slider">
+</label>
+
+
+
+<!-- <div id="gridtest">
+  <div class="box"></div>
+  <div class="box"></div>
+  <div class="box"></div>
+  <div class="box"></div>
+</div> -->
+
+</body>
 
 </html>

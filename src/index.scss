@@ -5,11 +5,24 @@
 h1 {
     color: blue;
 }
+
+
+#main-blocks {
+    background-color: blue;
+   display: grid;
+   grid-template-columns: 620px 620px;
+   
+}
+
+
+
 button {
     cursor: pointer;
 }
 .container {
-    display: inline-flex;
+    width: 615px;
+    height: 300px;
+    display: inline flex;
     background-color: grey;
 }
 
@@ -46,6 +59,10 @@ button {
     border: 1px solid black;
     background-color: red;
 }
+.selected-3 {
+    border: 1px solid black;
+    background-color: greenyellow;
+}
 
 .node.current-beat {
     transition: border .2s ease-out;
@@ -74,8 +91,8 @@ button {
 }
 .keyboard {
     background-color: grey;
-    width: 53%;
-    display: flex;
+    // width: 500px;
+    display: inline-flex;
     flex-direction: column;
     justify-content: space-around;
     
@@ -91,3 +108,21 @@ button {
     display: flex;
     justify-content: space-between;
 }
+
+.inactive {
+    color: black;
+    background-color: rgb(79, 77, 77);
+}
+
+
+
+// .box {
+//     background-color: red;
+//     border: 2px solid black;
+//     width: 40px;
+//     height: 40px;
+// }
+// #gridtest {
+//     display: grid;
+//     grid-template-columns: 40px 40px;
+// }
