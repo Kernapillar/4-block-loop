@@ -35,7 +35,7 @@ class DrumSequencer extends Sequencer {
         } else if (currentNode.state === 3) {
             this.removeNodeClasses(e.target);
             e.target.classList.add('drum-selected-3')
-            e.target.innerText = "+"
+            e.target.innerText = "1"
         } else {
             this.removeNodeClasses(e.target);
         }

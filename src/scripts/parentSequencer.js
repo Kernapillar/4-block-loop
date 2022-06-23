@@ -40,7 +40,7 @@ class Sequencer {
             row.forEach((unusedVar, nIdx) => {
                 const seqNode = document.createElement('button');
                 seqNode.className = 'node'
-                seqNode.innerText = "1"
+                seqNode.innerText = "2"
                 seqNode.classList.add(`col-${nIdx}`)
                 seqNode.addEventListener('click', (e) => {
                     this.clickToggle(rIdx, nIdx, e, this.extendedMode);

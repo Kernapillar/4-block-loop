@@ -216,6 +216,7 @@ button {
   width: 100px;
   margin-left: 10px;
   border: 1px solid black;
+  color: #c8c8c8;
   background-color: #c8c8c8;
   cursor: pointer;
 }

@@ -58,11 +58,11 @@ class ChordSequencer extends Sequencer {
         } else if (currentNode.state === 2) {
             this.removeNodeClasses(e.target);
             e.target.classList.add('chords-selected-2')
-            e.target.innerText = "+"
+            e.target.innerText = "2"
         } else if (currentNode.state === 3) {
             this.removeNodeClasses(e.target);
             e.target.classList.add('chords-selected-3')
-            e.target.innerText = "2"
+            e.target.innerText = "1"
         } else {
             this.removeNodeClasses(e.target);
         }
@@ -89,6 +89,7 @@ class ChordSequencer extends Sequencer {
             row.forEach((unusedVar, nIdx) => {
                 const seqNode = document.createElement('button');
                 seqNode.className = 'chord-node'
+                seqNode.innerText = "2"
                 seqNode.classList.add(`chordCol-${nIdx}`)
                 seqNode.addEventListener('click', (e) => {
                     this.clickToggle(rIdx, nIdx, e, this.extendedMode);

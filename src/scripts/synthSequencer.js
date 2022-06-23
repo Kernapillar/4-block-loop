@@ -85,7 +85,7 @@ class SynthSequencer extends Sequencer {
         } else if (currentNode.state === 3) {
             this.removeNodeClasses(e.target);
             e.target.classList.add('bass-selected-3')
-            e.target.innerText = "2"
+            e.target.innerText = "1"
         } else {
             this.removeNodeClasses(e.target);
         }
