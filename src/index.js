@@ -1,23 +1,12 @@
 // entry file for JS
 import * as Tone from 'tone';
+import * as Canvas from './scripts/canvas'
 import { SynthSequencer } from './scripts/synthSequencer';
 import { ChordSequencer } from './scripts/chordSequencer';
 import { DrumSequencer } from './scripts/drumSequencer';
 import {KeyboardPlayer} from './scripts/KeyboardPlayer';
 
-// to do: 
-        
-    // fillout the controls for sequencers/setup double mode
 
-    // add chords Sequencer
-    
-    // research synth sounds to use
-    // implement the playable piano
-    // CSS style! 
-
-    // if there is time: 
-        // allow chainable patterns to add variety to the loops
-        // color coded canvas visualizer?
 
 document.addEventListener("DOMContentLoaded", () => {
 
@@ -50,6 +39,58 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const sequencersArr = [sequencer, drums, chords];
     
+    // // canvas starts
+    // const canvas = document.getElementById('canvas1');
+    // const ctx = canvas.getContext('2d');
+    // // whats this
+    // canvas.width = window.innerWidth;
+    // canvas.height = window.innerHeight;
+    // let particles = [];
+    
+
+    // class Particle {
+    //     constructor (x, y) {
+    //         this.x = x;
+    //         this.y = y;
+    //         this.size = Math.random(100)
+    //         this.weight = Math.random(4);
+    //         this.directionX = 1;
+    //     }
+
+    //     update(){
+    //         this.weight += 0.01;
+    //         this.y += this.weight;
+    //     }
+
+    //     draw() {
+    //         ctx.fillStyle = "red";
+    //         ctx.beginPath();
+    //         ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+    //         ctx.closePath();
+    //         ctx.fill();
+    //     }
+
+
+    // }
+
+    // const particle1 = new Particle(100, 24);
+
+    // function animate(){
+    //     ctx.fillStyle = 'rbg(255, 255, 255, 0.01)';
+    //     ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    //     particle1.update();
+    //     particle1.draw();
+    //     requestAnimationFrame(animate);
+    // }
+    // animate();
+
+
+
+
+
+    // // canvas ends
+
     // global sequencer play loop
     const playLoop = () => {
         const repeat = (time) => {
@@ -73,6 +114,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!(e.key in keyboard.KEYMAP)) return
         if (e.repeat) return
         keyboard.playNotes(e.key);
+        
     });
     document.addEventListener('keyup', (e) => {
         if (!(e.key in keyboard.KEYMAP)) return
@@ -149,5 +191,8 @@ document.addEventListener("DOMContentLoaded", () => {
         let currentBpm = Math.floor(Tone.Transport.bpm.value)
         bpmIndicator.innerText = `Beats Per Minute: ${currentBpm}`
     }
+
+
+
 
 })
