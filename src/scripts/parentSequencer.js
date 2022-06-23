@@ -9,9 +9,13 @@ class Sequencer {
     }
 
     extendedModeToggle() {
+        let extended = document.getElementById("extended-mode")
         if (this.extendedMode) {
             this.extendedMode = false
-        } else this.extendedMode = true
+            extended.innerText = "Extended Mode Off"
+            
+        } else {this.extendedMode = true
+        extended.innerText = "Extended Mode On"}
     }
 
     // creates the grid and initiates node objects in each row for each step
@@ -36,6 +40,7 @@ class Sequencer {
             row.forEach((unusedVar, nIdx) => {
                 const seqNode = document.createElement('button');
                 seqNode.className = 'node'
+                seqNode.innerText = "1"
                 seqNode.classList.add(`col-${nIdx}`)
                 seqNode.addEventListener('click', (e) => {
                     this.clickToggle(rIdx, nIdx, e, this.extendedMode);
@@ -56,35 +61,9 @@ class Sequencer {
         controlContainer.appendChild(clearButton);
     }
     
-    // helper function to remove "selected" classes from a node
-    removeNodeClasses(htmlNode) {
-    if (htmlNode.classList.contains('selected')) {
-            htmlNode.classList.remove('selected');
-        } else if (htmlNode.classList.contains('selected-2')) {
-            htmlNode.classList.remove('selected-2');
-    } else if (htmlNode.classList.contains('selected-3')) {
-        htmlNode.classList.remove('selected-3');
-   }}
+   
 
-    // toggle logic when you activate/deactivate a node
-    // if extendedMode = true, allow selected 2 and 3 in the cycle, else just selected/none
-    clickToggle(rIdx, nIdx, e, extendedMode) {
-        const currentNode = this.grid[rIdx][nIdx]
-        currentNode.stateToggle(extendedMode);
-        if (currentNode.state === 1) {
-            this.removeNodeClasses(e.target);
-            e.target.classList.add('selected');
-        } else if (currentNode.state === 2) {
-            this.removeNodeClasses(e.target);
-            e.target.classList.add('selected-2')
-        } else if (currentNode.state === 3) {
-            this.removeNodeClasses(e.target);
-            e.target.classList.add('selected-3')
-        } else {
-            this.removeNodeClasses(e.target);
-        }
-        
-    }
+    
     clearAll() {
         for (let i = 0; i < this.grid.length; i++) {
             const row = this.grid[i];

@@ -71,10 +71,37 @@ class SynthSequencer extends Sequencer {
         }
     }
 
-    
+    // toggle logic when you activate/deactivate a node
+    // if extendedMode = true, allow selected 2 and 3 in the cycle, else just selected/none
+    clickToggle(rIdx, nIdx, e, extendedMode) {
+        const currentNode = this.grid[rIdx][nIdx]
+        currentNode.stateToggle(extendedMode);
+        if (currentNode.state === 1) {
+            this.removeNodeClasses(e.target);
+            e.target.classList.add('bass-selected');
+        } else if (currentNode.state === 2) {
+            this.removeNodeClasses(e.target);
+            e.target.classList.add('bass-selected-2')
+        } else if (currentNode.state === 3) {
+            this.removeNodeClasses(e.target);
+            e.target.classList.add('bass-selected-3')
+            e.target.innerText = "2"
+        } else {
+            this.removeNodeClasses(e.target);
+        }
+        
+    }
 
 
-
+    // helper function to remove "selected" classes from a node
+    removeNodeClasses(htmlNode) {
+    if (htmlNode.classList.contains('bass-selected')) {
+            htmlNode.classList.remove('bass-selected');
+        } else if (htmlNode.classList.contains('bass-selected-2')) {
+            htmlNode.classList.remove('bass-selected-2');
+    } else if (htmlNode.classList.contains('bass-selected-3')) {
+        htmlNode.classList.remove('bass-selected-3');
+   }}
     
 }
 

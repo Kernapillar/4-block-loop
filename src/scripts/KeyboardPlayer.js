@@ -34,7 +34,7 @@ class KeyboardPlayer {
         //         }
         //     }).toDestination()
 
-        // this.instrument = new Tone.PolySynth(({ oscillator: { type: "square8" } })).toDestination()
+        // this.instrument = new Tone.PolySynth(({ oscillator: { type: "sine8" } })).toDestination()
         this.scale =  scale
     }
 
