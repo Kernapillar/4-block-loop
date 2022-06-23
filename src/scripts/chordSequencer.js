@@ -1,4 +1,5 @@
 import { Sequencer } from './parentSequencer'
+import {Particle } from './canvas'
 import * as Tone from 'tone'
 
 
@@ -35,12 +36,16 @@ class ChordSequencer extends Sequencer {
                 this.seqScanToggle(this.measure)
                 if (this.grid[i][this.measure].state === 1) {
                     synth.triggerAttackRelease(note, '1b', time)
+                    Particle.particleFactory('greenyellow')
+
                 }
                 if (everyOther && this.grid[i][this.measure].state === 2) {
                     synth.triggerAttackRelease(note, '4b', time)
+                    Particle.particleFactory('greenyellow')
                 }
                 if (!everyOther && this.grid[i][this.measure].state === 3) {
                     synth.triggerAttackRelease(note, '4b', time)
+                    Particle.particleFactory('greenyellow')
                 }
             }
             this.measure = (this.measure += 1) % 4

@@ -1,6 +1,6 @@
 // entry file for JS
 import * as Tone from 'tone';
-import * as Canvas from './scripts/canvas'
+import { Particle }from './scripts/canvas'
 import { SynthSequencer } from './scripts/synthSequencer';
 import { ChordSequencer } from './scripts/chordSequencer';
 import { DrumSequencer } from './scripts/drumSequencer';
@@ -39,57 +39,23 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const sequencersArr = [sequencer, drums, chords];
     
-    // // canvas starts
-    // const canvas = document.getElementById('canvas1');
-    // const ctx = canvas.getContext('2d');
-    // // whats this
-    // canvas.width = window.innerWidth;
-    // canvas.height = window.innerHeight;
-    // let particles = [];
     
+    const canvas = document.getElementById('canvas1');
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight
+    console.log(canvas.height)
+    // Particle.animate(canvas, ctx)
+    // Particle.test(ctx)
+    function animate(){
+        ctx.fillStyle = 'rgba(200,200,200,0.1)'; 
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        Particle.particlesArr.forEach(particle => particle.update());
+        Particle.particlesArr.forEach(particle => particle.draw(ctx));
+        requestAnimationFrame(animate);
+    }
+    animate()
 
-    // class Particle {
-    //     constructor (x, y) {
-    //         this.x = x;
-    //         this.y = y;
-    //         this.size = Math.random(100)
-    //         this.weight = Math.random(4);
-    //         this.directionX = 1;
-    //     }
-
-    //     update(){
-    //         this.weight += 0.01;
-    //         this.y += this.weight;
-    //     }
-
-    //     draw() {
-    //         ctx.fillStyle = "red";
-    //         ctx.beginPath();
-    //         ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-    //         ctx.closePath();
-    //         ctx.fill();
-    //     }
-
-
-    // }
-
-    // const particle1 = new Particle(100, 24);
-
-    // function animate(){
-    //     ctx.fillStyle = 'rbg(255, 255, 255, 0.01)';
-    //     ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-    //     particle1.update();
-    //     particle1.draw();
-    //     requestAnimationFrame(animate);
-    // }
-    // animate();
-
-
-
-
-
-    // // canvas ends
 
     // global sequencer play loop
     const playLoop = () => {
@@ -114,12 +80,15 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!(e.key in keyboard.KEYMAP)) return
         if (e.repeat) return
         keyboard.playNotes(e.key);
+        Particle.particleFactory('cyan')
         
     });
     document.addEventListener('keyup', (e) => {
         if (!(e.key in keyboard.KEYMAP)) return
         keyboard.stopNotes(e.key);
     });
+
+    // volume sliders
     const keyboardVol = document.getElementById('keyboard-slider');
     keyboardVol.oninput = () => {
         keyboard.instrument.volume.value = keyboardVol.value};
@@ -133,6 +102,15 @@ document.addEventListener("DOMContentLoaded", () => {
         chords.synths.forEach(synth => (synth.volume.value = chordsVol.value))};
 
 
+    const instButton = document.getElementById("instructions-open");
+    instButton.addEventListener('click', () => {
+        const instPage = document.getElementById('instructions');
+        if (instPage.style.display === 'none') {
+            instPage.style.display = 'block'
+        } else {
+            instPage.style.display = 'none';
+        }
+    })
 
     // setup play and pause controls 
     const playPause = document.getElementById("play-pause");

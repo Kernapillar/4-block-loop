@@ -1,4 +1,5 @@
 import { Sequencer } from './parentSequencer'
+import {Particle } from './canvas'
 import * as Tone from 'tone'
 import { Player } from 'tone';
 
@@ -58,12 +59,18 @@ class DrumSequencer extends Sequencer {
             let sample = this.samples[i]
             this.seqScanToggle(curBeat)
             if (this.grid[i][curBeat].state === 1) {
-                sample.start(time);}
+                sample.start(time);
+                Particle.particleFactory('yellow')
+            }
             if (everyOther && this.grid[i][curBeat].state === 2) {
                 sample.start(time);
+                Particle.particleFactory('yellow')
+
             }
             if (!everyOther && this.grid[i][curBeat].state === 3) {
                 sample.start(time);
+                Particle.particleFactory('yellow')
+
             }
             
         }

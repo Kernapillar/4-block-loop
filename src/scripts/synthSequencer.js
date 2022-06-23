@@ -1,4 +1,5 @@
 import { Sequencer } from './parentSequencer'
+import {Particle } from './canvas'
 import * as Tone from 'tone'
 
 
@@ -61,12 +62,17 @@ class SynthSequencer extends Sequencer {
             this.seqScanToggle(curBeat)
             if (this.grid[i][curBeat].state === 1) {
                 synth.triggerAttackRelease(note, '8n', time)
+                Particle.particleFactory('orange')
+
             }
             if (everyOther && this.grid[i][curBeat].state === 2) {
                 synth.triggerAttackRelease(note, '8n', time)
+                Particle.particleFactory('orange')
             }
             if (!everyOther && this.grid[i][curBeat].state === 3) {
                 synth.triggerAttackRelease(note, '8n', time)
+                Particle.particleFactory('orange')
+
             }
         }
     }
