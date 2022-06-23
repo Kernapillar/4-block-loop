@@ -1,10 +1,11 @@
 
+    
 class Particle {
     constructor (color) {
-        this.x = this.randoInt(950);
+        this.x = this.randoInt(window.innerWidth);
         this.y = 0;
         this.size = 10
-        this.weight = this.randoInt(6);
+        this.weight = this.randoInt(10);
         this.directionX = -.3;
         this.color = `${color}`
     }

@@ -44,7 +44,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const ctx = canvas.getContext('2d');
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight
-    console.log(canvas.height)
     // Particle.animate(canvas, ctx)
     // Particle.test(ctx)
     function animate(){
