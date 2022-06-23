@@ -21,6 +21,36 @@ class DrumSequencer extends Sequencer {
         return soundsArr;
     }
 
+    // toggle logic when you activate/deactivate a node
+    // if extendedMode = true, allow selected 2 and 3 in the cycle, else just selected/none
+    clickToggle(rIdx, nIdx, e, extendedMode) {
+        const currentNode = this.grid[rIdx][nIdx]
+        currentNode.stateToggle(extendedMode);
+        if (currentNode.state === 1) {
+            this.removeNodeClasses(e.target);
+            e.target.classList.add('drum-selected');
+        } else if (currentNode.state === 2) {
+            this.removeNodeClasses(e.target);
+            e.target.classList.add('drum-selected-2')
+        } else if (currentNode.state === 3) {
+            this.removeNodeClasses(e.target);
+            e.target.classList.add('drum-selected-3')
+            e.target.innerText = "+"
+        } else {
+            this.removeNodeClasses(e.target);
+        }
+        
+    }
+
+    // helper function to remove "selected" classes from a node
+    removeNodeClasses(htmlNode) {
+        if (htmlNode.classList.contains('drum-selected')) {
+                htmlNode.classList.remove('drum-selected');
+            } else if (htmlNode.classList.contains('drum-selected-2')) {
+                htmlNode.classList.remove('drum-selected-2');
+        } else if (htmlNode.classList.contains('drum-selected-3')) {
+            htmlNode.classList.remove('drum-selected-3');
+       }}
 
     playNotes(everyOther, curBeat, time) {
         for (let i = 0; i < this.grid.length; i++) {

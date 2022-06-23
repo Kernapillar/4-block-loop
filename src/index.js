@@ -73,11 +73,23 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!(e.key in keyboard.KEYMAP)) return
         if (e.repeat) return
         keyboard.playNotes(e.key);
-    })
+    });
     document.addEventListener('keyup', (e) => {
         if (!(e.key in keyboard.KEYMAP)) return
         keyboard.stopNotes(e.key);
-    })
+    });
+    const keyboardVol = document.getElementById('keyboard-slider');
+    keyboardVol.oninput = () => {
+        keyboard.instrument.volume.value = keyboardVol.value};
+
+    const drumsVol = document.getElementById('drums-slider');
+    drumsVol.oninput = () => {
+    drums.samples.forEach(drum => (drum.volume.value = drumsVol.value))};
+
+    const chordsVol = document.getElementById('chords-slider');
+    chordsVol.oninput = () => {
+        chords.synths.forEach(synth => (synth.volume.value = chordsVol.value))};
+
 
 
     // setup play and pause controls 
@@ -109,6 +121,7 @@ document.addEventListener("DOMContentLoaded", () => {
         sequencersArr.forEach(sequencer => {
             sequencer.extendedModeToggle()
         })
+        
     })
 
 
@@ -134,7 +147,7 @@ document.addEventListener("DOMContentLoaded", () => {
         Tone.Transport.bpm.value = bpmSlider.value
         let bpmIndicator = document.getElementById('bpm-indicator')
         let currentBpm = Math.floor(Tone.Transport.bpm.value)
-        bpmIndicator.innerText = `bpm: ${currentBpm}`
+        bpmIndicator.innerText = `Beats Per Minute: ${currentBpm}`
     }
 
 })

@@ -16,12 +16,7 @@ class ChordSequencer extends Sequencer {
     createSynths (count) {
         const synths = [];
         for (let i = 0; i < count; i++) {
-            let synth = new Tone.PolySynth(
-                Tone.AMSynth)
-        let distortion =  new Tone.Distortion(0.8);
-        let reverb = new Tone.Freeverb(0.1, 3000);
-        let delay = new Tone.PingPongDelay('16n', 0.1);
-        synth.chain(delay, reverb).toDestination();
+            let synth = new Tone.PolySynth(({ oscillator: { type: "sine8" } })).toDestination()
             synths.push(synth);
         };
         return synths;
@@ -40,7 +35,6 @@ class ChordSequencer extends Sequencer {
                 this.seqScanToggle(this.measure)
                 if (this.grid[i][this.measure].state === 1) {
                     synth.triggerAttackRelease(note, '1b', time)
-                    console.log("playing notes")
                 }
                 if (everyOther && this.grid[i][this.measure].state === 2) {
                     synth.triggerAttackRelease(note, '4b', time)
@@ -53,6 +47,37 @@ class ChordSequencer extends Sequencer {
         }
     }
 
+    // toggle logic when you activate/deactivate a node
+    // if extendedMode = true, allow selected 2 and 3 in the cycle, else just selected/none
+    clickToggle(rIdx, nIdx, e, extendedMode) {
+        const currentNode = this.grid[rIdx][nIdx]
+        currentNode.stateToggle(extendedMode);
+        if (currentNode.state === 1) {
+            this.removeNodeClasses(e.target);
+            e.target.classList.add('chords-selected');
+        } else if (currentNode.state === 2) {
+            this.removeNodeClasses(e.target);
+            e.target.classList.add('chords-selected-2')
+            e.target.innerText = "+"
+        } else if (currentNode.state === 3) {
+            this.removeNodeClasses(e.target);
+            e.target.classList.add('chords-selected-3')
+            e.target.innerText = "2"
+        } else {
+            this.removeNodeClasses(e.target);
+        }
+        
+    }
+
+    // helper function to remove "selected" classes from a node
+    removeNodeClasses(htmlNode) {
+        if (htmlNode.classList.contains('chords-selected')) {
+                htmlNode.classList.remove('chords-selected');
+            } else if (htmlNode.classList.contains('chords-selected-2')) {
+                htmlNode.classList.remove('chords-selected-2');
+        } else if (htmlNode.classList.contains('chords-selected-3')) {
+            htmlNode.classList.remove('chords-selected-3');
+       }}
 
     // overwrites the baseic render grid to style the chord nodes differently
     renderGrid(container) {
@@ -100,7 +125,7 @@ class ChordSequencer extends Sequencer {
             curNode.classList.add('current-beat')
             setTimeout(() => {
                 curNode.classList.remove('current-beat')
-            }, 200)  
+            }, 400)  
         }
     }
 

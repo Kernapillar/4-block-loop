@@ -8,7 +8,8 @@
     <link rel="stylesheet" href="./dist/main.css" />
     <script src="./dist/main.js"></script>
     <title>4 Block Loop</title>
-  </head>
+    <link rel="icon" href="/images/favicon.ico" type="image/x-icon"> 
+   </head>
 
   <body>
     <header>
@@ -24,6 +25,9 @@
     <div class= "controls left" id="drum-controls">
        <h2>Drums</h2>
        <div id="drum-clear"></div> 
+       <label> 
+        <input type="range" class="vertical" min="-20" max="0" step="1" value="-10" id="drums-slider">
+        </label>
     </div>
     <div class="grid right" id="drums-grid"></div>
 </div>
@@ -32,6 +36,10 @@
 <div class="container keyboard">
   <div class= "controls" id="keyboard-controls">
     <h2>Keyboard</h2>
+    <button>Piano mode</button>
+    <label> 
+      <input type="range" min="-20" max="0" step="1" value="-10" class= "vertical" id="keyboard-slider">
+      </label>
   </div>
   <ul class="keyboard-row">
     <li class="large inactive keyboard-node" id="tab">TAB</li>
@@ -86,6 +94,9 @@
   <div class= "controls left" id="bass-controls">
       <h2>Bass</h2>
       <div id="bass-clear"></div>
+      <label> 
+        <input type="range" class="vertical" min="-20" max="0" step="1" value="-10" id="bass-slider">
+        </label>
     </div>
     <div class="grid right" id="bass-grid">
     </div>
@@ -97,6 +108,9 @@
   <div class= "controls left" id="chord-controls">
     <h2>Chords</h2>
     <div id="chord-clear"></div>
+    <label> 
+      <input type="range" class="vertical" min="-20" max="0" step="1" value="-10" id= "chords-slider">
+    </label>
   </div>
 
   <div class="grid left" id="chord-grid"></div>
@@ -112,7 +126,7 @@
   <h3>Global Controls</h3>
   <button id="play-pause">Play</button>
   <button id="volume-button">Mute</button>
-  <button id="extended-mode">Extended Mode</button>
+  <button id="extended-mode">Extended Mode Off</button>
   
   <label><div>Master Volume</div>
   <input type="range" min="-20" max="0" step="1" value="-10" id="volume-slider">
