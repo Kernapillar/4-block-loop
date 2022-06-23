@@ -1,29 +1,21 @@
 # 4 Block Loop - Alex Kern 
 
 ## Background 
-  My project is a small music making interface, with a two main sections, a drum sequencer and a synthesizer playable using a computer keyboard.
-I want to create a quick and fun way for users to create music, without the need for any previous knowlege about music or synthesis. The synthesizer 
-notes will all be in the same key, to ensure that a user does not need to know any music theory to create something that sounds plesant. 
+4 Block Loop is a small music making interface with four main sections, 3 sequencers (Drums, Bass and Chords) and a piano playable using a computer keyboard.
+My goal was to provide a fun way for users to create music, without the need for any previous knowlege about music or synthesis. The synthesizer 
+notes are all in the same key, to ensure that a user does not need to know any music theory to create something that sounds plesant. 
 
   The first main section is a drum sequencer, which is essentially a grid that users can click notes into. When played, the sequencer will scan from left to 
-right, playing notes that have been 'activated' different rows will be different drum sounds (kick, snare, hi-hats, cymbols) and a user will be able to 
-program in up to 4 bars of notes at a time. In addition to drums I plan to add a simple bass synt sequencer, as well as one for some basic chords. 
-The second section is a polysynth (a synthesizer that can play multiple synth sounds at once). This will be playable on the computer keyboard. The layout 
+right, playing notes that have been 'activated' different rows will be different drum sounds (kick, snare, hi-hats) and a user will be able to 
+program in up to 16 notes at a time. In addition to drums there is a simple bass synth sequencer, as well as one for some basic chords. 
+There is a toggle switch to activate "Extended Mode" at the bottom of the screen, which allows users to activate notes to be played every other loop, to extend the patterns and add some variety. 
+The second section is a polysynth (a synthesizer that can play multiple synth sounds at once). This is playable on the computer keyboard. The layout 
 of the keys will be non-traditional and allow the user to use both hands at the same time to play different octaves, rather than the usual keyboard 
-layout with a single octave. The user will also be able to adjust the envelopes and add effects to the sound. 
+layout with a single octave. Each of the sections has a separate volume control, along with the master controls at the bottom of the page. 
 
 ## Functionality & MVPs
 
-In 4 Block Loop, users will be able to:
-
-- use global controls to play, pause, and control volume of the entire project
-- click notes into the drum sequencer to play drum sounds in a 4 bar loop
-- adjust the volume of each seprate drum sound, as well as toggle mute on a track 
-- press buttons on their keyboard to play the synthesizer sounds along with the sequencer
-- adjust peramaters of the synthesizer to change the synthesizer sounds
-
-
-
+To make 4 Block Loops, I used
 
 In addition, this project will include:
 
