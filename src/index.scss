@@ -2,9 +2,18 @@
 // reset file
 @import './styles/reset.css';
 
-h1 {
+#instructions {
+    z-index: 1;
+    display: none;
+    position: fixed;
+    width:1250px;
+    margin-left: auto;
+    margin-right: auto;
+    color: black;
+    background-color: white;
+    height: 100%;
+    padding: 10px;
     
-   
 }
 
 header {

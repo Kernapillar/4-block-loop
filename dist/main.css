@@ -53,6 +53,19 @@ table {
 /*!*************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/sass-loader/dist/cjs.js!./src/index.scss ***!
   \*************************************************************************************************************************************/
+#instructions {
+  z-index: 1;
+  display: none;
+  position: fixed;
+  width: 1250px;
+  margin-left: auto;
+  margin-right: auto;
+  color: black;
+  background-color: white;
+  height: 100%;
+  padding: 10px;
+}
+
 header {
   background-color: #c8c8c8;
   display: flex;
