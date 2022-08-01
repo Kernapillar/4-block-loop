@@ -380,6 +380,14 @@ button {
   left: 1230px;
 }
 
+#social-link2 {
+  height: 50px;
+  width: 50px;
+  position: absolute;
+  top: 25px;
+  left: 1350px;
+}
+
 #instructions-open {
   position: absolute;
   top: 40px;
