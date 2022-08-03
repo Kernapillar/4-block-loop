@@ -342,3 +342,38 @@ button {
     top: 40px;
     left: 160px;
 }
+
+.logo {
+    display: grid;
+    grid-template-columns: 25px 25px;
+    grid-row: auto auto;
+    gap: 5px;
+    width: 54px;
+    padding: 5px;
+    border: 2px solid black;
+    border-radius: 5px;
+}
+.yellow {
+    background-color: yellow;
+}
+.orange {
+    background-color: orange;
+}
+.cyan {
+    background-color: cyan;
+}
+.green {
+    background-color: yellowgreen;
+}
+
+.logo-node {
+    display: inline-flex;
+    border-radius: 5px;
+    text-align: center;
+    height: 25px;
+    color: #c8c8c8;
+    width: 25px;
+    border: 2px solid black;
+    // background-color: #c8c8c8;
+    cursor: pointer;
+}
