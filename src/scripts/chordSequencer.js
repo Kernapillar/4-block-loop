@@ -17,7 +17,28 @@ class ChordSequencer extends Sequencer {
     createSynths (count) {
         const synths = [];
         for (let i = 0; i < count; i++) {
-            let synth = new Tone.PolySynth(({ oscillator: { type: "sine8" } })).toDestination()
+            let synth = new Tone.PolySynth(({ oscillator: {
+                "harmonicity": 3.01,
+                "modulationIndex": 14,
+                "oscillator": {
+                    "type": "triangle"
+                },
+                "envelope": {
+                    "attack": 0.8,
+                    "decay": 0.3,
+                    "sustain": 0.1,
+                    "release": 1.2
+                },
+                "modulation" : {
+                    "type": "square"
+                },
+                "modulationEnvelope" : {
+                    "attack": 0.01,
+                    "decay": 0.5,
+                    "sustain": 0.2,
+                    "release": 0.1
+                }
+            } })).toDestination()
             synths.push(synth);
         };
         return synths;

@@ -94,11 +94,22 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const drumsVol = document.getElementById('drums-slider');
     drumsVol.oninput = () => {
-    drums.samples.forEach(drum => (drum.volume.value = drumsVol.value))};
+        drums.samples.forEach(drum => (drum.volume.value = drumsVol.value))};
 
     const chordsVol = document.getElementById('chords-slider');
     chordsVol.oninput = () => {
         chords.synths.forEach(synth => (synth.volume.value = chordsVol.value))};
+
+    const bassVol = document.getElementById('bass-slider');
+    bassVol.oninput = () => {
+        sequencer.synths.forEach(synth => (synth.volume.value = bassVol.value))};
+
+    keyboard.instrument.volume.value = keyboardVol.value;
+    drums.samples.forEach(drum => (drum.volume.value = drumsVol.value));
+    chords.synths.forEach(synth => (synth.volume.value = chordsVol.value));
+    sequencer.synths.forEach(synth => (synth.volume.value = bassVol.value))
+
+
 
 
     const instButton = document.getElementById("instructions-open");

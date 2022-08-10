@@ -20,30 +20,25 @@ class SynthSequencer extends Sequencer {
             let synth = new Tone.MonoSynth(
 
                 {
+                    "harmonicity": 3.999,
                     "oscillator": {
-                        "type": "fmsquare5",
-                        "modulationType" : "triangle",
-                          "modulationIndex" : 2,
-                          "harmonicity" : 0.501
-                    },
-                    "filter": {
-                        "Q": 1,
-                        "type": "lowpass",
-                        "rolloff": -24
+                        "type": "square"
                     },
                     "envelope": {
-                        "attack": 0.01,
-                        "decay": 0.1,
-                        "sustain": 0.4,
-                        "release": 2
+                        "attack": 0.03,
+                        "decay": 0.3,
+                        "sustain": 0.7,
+                        "release": 0.8
                     },
-                    "filterEnvelope": {
-                        "attack": 0.01,
-                        "decay": 0.1,
+                    "modulation" : {
+                          "volume" : 12,
+                        "type": "square6"
+                    },
+                    "modulationEnvelope" : {
+                        "attack": 2,
+                        "decay": 3,
                         "sustain": 0.8,
-                        "release": 1.5,
-                        "baseFrequency": 50,
-                        "octaves": 4.4
+                        "release": 0.1
                     }
                 }).toDestination()
             synths.push(synth);
