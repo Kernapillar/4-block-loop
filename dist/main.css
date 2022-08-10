@@ -69,17 +69,22 @@ table {
   border-radius: 10px;
 }
 
-header {
-  background-color: rgb(200, 200, 200);
-  display: flex;
-  font-size: larger;
+.canvas-overlay {
+  position: absolute;
+  top: 5px;
+  left: 0px;
   width: 100%;
-  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  justify-content: space-around;
   align-items: center;
-  border: 2px solid rgb(90, 90, 90);
-  border-radius: 10px;
-  margin-bottom: 5px;
-  margin-top: 5px;
+}
+
+.social-links {
+  width: 150px;
+  display: flex;
+  justify-content: space-between;
 }
 
 #canvas1 {
@@ -96,9 +101,6 @@ header {
 }
 
 #canvas-title {
-  position: absolute;
-  top: 0.5%;
-  left: 43%;
   font-size: 40px;
   line-height: 40px;
 }
@@ -375,23 +377,15 @@ button {
 #social-link {
   height: 50px;
   width: 50px;
-  position: absolute;
-  top: 25px;
-  left: 1230px;
 }
 
 #social-link2 {
   height: 50px;
   width: 50px;
-  position: absolute;
-  top: 25px;
-  left: 1350px;
 }
 
 #instructions-open {
-  position: absolute;
-  top: 40px;
-  left: 160px;
+  height: 30px;
 }
 
 .logo {

@@ -20,8 +20,7 @@ class Particle {
     
     update(){
         
-        if (this.y > 726) {
-            console.log(Particle.particlesArr)
+        if (this.y > 1500) {
             let idx = Particle.particlesArr.indexOf(this)
             Particle.particlesArr.splice(idx, 1)
         }
