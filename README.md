@@ -1,5 +1,9 @@
 # 4 Block Loop - Alex Kern 
 
+## Live Link: 
+
+https://kernapillar.github.io/4-block-loop/
+
 ## Background 
 4 Block Loop is a small music making interface with four main sections, 3 sequencers (Drums, Bass and Chords) and a piano playable using a computer keyboard.
 My goal was to provide a fun way for users to create music, without the need for any previous knowlege about music or synthesis. The synthesizer 
