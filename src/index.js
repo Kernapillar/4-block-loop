@@ -128,7 +128,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (!started) {
             Tone.start();
             started = true
-            console.log('Audio is Started!')
+            // console.log('Audio is Started!')
             playLoop();
         }
         if (playing) {

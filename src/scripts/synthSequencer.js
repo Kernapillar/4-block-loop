@@ -17,33 +17,29 @@ class SynthSequencer extends Sequencer {
     createSynths (count) {
         const synths = [];
         for (let i = 0; i < count; i++) {
-            let synth = new Tone.MonoSynth(
-
-                {
-                    "harmonicity": 3.999,
-                    "oscillator": {
-                        "type": "square"
-                    },
-                    "envelope": {
-                        "attack": 0.03,
-                        "decay": 0.3,
-                        "sustain": 0.7,
-                        "release": 0.8
-                    },
-                    "modulation" : {
-                          "volume" : 12,
-                        "type": "square6"
-                    },
-                    "modulationEnvelope" : {
-                        "attack": 2,
-                        "decay": 3,
-                        "sustain": 0.8,
-                        "release": 0.1
-                    }
-                }).toDestination()
+            let synth = new Tone.PolySynth(Tone.Synth,
+                    {
+                        "oscillator": {
+                            "type": "fatcustom",
+                              "partials" : [0.2, 1, 0, 0.5, 0.1],
+                              "spread" : 40,
+                              "count" : 3
+                        },
+                        "filter": {
+                            "Q": 2,
+                            "type": "lowpass",
+                            "rolloff": -24
+                        },
+                        "envelope": {
+                            "attack": 0.01,
+                            "decay": 1.6,
+                            "sustain": 0,
+                            "release": 1.6
+                        }
+                    }).toDestination()
             synths.push(synth);
         };
-        return synths;
+        return null;
         }
 
     
