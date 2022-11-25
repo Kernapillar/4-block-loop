@@ -39,7 +39,7 @@ class SynthSequencer extends Sequencer {
                     }).toDestination()
             synths.push(synth);
         };
-        return null;
+        return synths;
         }
 
     
