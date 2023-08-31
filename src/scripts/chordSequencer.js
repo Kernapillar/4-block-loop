@@ -148,7 +148,6 @@ class ChordSequencer extends Sequencer {
     // overwrites parent class scanning animation
     seqScanToggle(measure) {
         const nodeColumn = document.getElementsByClassName(`chordCol-${(measure)}`)
-        // console.log(nodeColumn)
         for (let i = 0; i < nodeColumn.length; i++) {
             const curNode = nodeColumn[i];
             curNode.classList.add('current-beat')
