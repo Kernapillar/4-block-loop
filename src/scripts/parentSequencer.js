@@ -84,6 +84,7 @@ class Sequencer {
     // adds and removes current-beat class to visually indicate current beat
     seqScanToggle(curBeat) {
         const nodeColumn = document.getElementsByClassName(`col-${curBeat}`)
+        console.log(nodeColumn)
         for (let i = 0; i < nodeColumn.length; i++) {
             const curNode = nodeColumn[i];
             curNode.classList.add('current-beat')

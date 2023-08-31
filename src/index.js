@@ -135,6 +135,7 @@ document.addEventListener("DOMContentLoaded", () => {
             e.target.innerText = "Play"
             Tone.Transport.stop();
             beat = 0;
+            chords.measure = 0; 
             everyOther = false;
             playing = false;
         } else {
